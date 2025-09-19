@@ -3,10 +3,12 @@
 ## Aplicativo Hands on: Pizza Hub - Imersão42
 
 **Descrição:**  
-Um simples aplicativo que reúne receitas de diversos sabores de pizza. O usuário pode escolher se gosta ou não dessas receitas e adicioná-las ou removê-las de duas listas diferentes: favoritas e detestadas. Adicionalmente, o usuário também conseguirá cadastrar novas receitas.
+Um simples aplicativo que reúne receitas de diversos sabores de pizza. O usuário pode escolher se gosta ou não dessas receitas e adicioná-las ou removê-las de duas listas diferentes: favoritas e detestadas. 
+
+- **Possível futura melhoria:** adicionalmente, o usuário também poderia conseguir cadastrar novas receitas.
 
 **Foco da prática:**  
-Criar custom Hooks (adição, remoção, atualização da visualização das receitas, etc) que usam as melhores práticas relacionadas aos Hooks nativos do React. Além de também explicar sobre os benefícios da Context API.
+Criar custom Hooks que usam as melhores práticas relacionadas aos Hooks nativos do React para features como login, logout, adição, remoção, atualização da visualização das receitas, etc. Além de também explicar sobre os benefícios da Context API.
 
 ---
 

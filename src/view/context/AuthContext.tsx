@@ -8,6 +8,7 @@ type AuthContextType = {
   logout: () => void;
 };
 
+//  Centralização do estado global:
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
@@ -25,12 +26,13 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const logout = () => setUser(null);
 
   return (
+    //  O provider irá encapsular o app.
     <AuthContext.Provider value={{ user, login, logout }}>
       {children}
     </AuthContext.Provider>
   );
 };
-
+//  Custom Hook para utilização do contexto:
 export const useAuth = () => {
   const ctx = useContext(AuthContext);
   if (!ctx) throw new Error("useAuth must be used within AuthProvider!");

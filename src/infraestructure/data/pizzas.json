@@ -1,0 +1,52 @@
+{
+  "recipes": [
+    {
+      "title": "Pizza de sushi",
+      "duration": "45 minutos",
+      "image": "/sushi.jpg",
+      "instructions": "Cozinhe arroz para sushi e tempere com vinagre de arroz, açúcar e sal (proporção: 2 colheres de vinagre, 20g açúcar, 5g sal para 350g arroz). Deixe o arroz esfriar até temperatura ambiente. Espalhe o arroz em formato circular numa forma redonda. Pressione bem para formar uma 'pizza' de arroz compacta. Espalhe uma camada fina de cream cheese ou maionese japonesa. Disponha fatias de salmão cru e camarões cozidos por cima. Decore com pepino, cebolinha e gergelim. Regue com molho shoyu e sirva gelado."
+    },
+    {
+      "title": "Pizza de sorvete",
+      "duration": "15 minutos + tempo de congelamento",
+      "image": "/icecream.jpg",
+      "instructions": "Faça uma massa de cookie doce em formato de pizza. Asse por 12 minutos e deixe esfriar completamente. Espalhe sorvete de baunilha por cima. Decore com frutas frescas (morangos, kiwi). Adicione calda de chocolate. Leve ao freezer por 30 minutos antes de servir."
+    },
+    {
+      "title": "Pizza de abacaxi",
+      "duration": "25 minutos",
+      "image": "/pineapple.jpg",
+      "instructions": "Prepare a massa de pizza. Espalhe molho de tomate. Adicione queijo mussarela. Coloque fatias de presunto. Distribua pedaços de abacaxi fresco. Asse por 15 minutos a 200°C."
+    },
+    {
+      "title": "Pizza de batata frita",
+      "duration": "35 minutos",
+      "image": "/fries.jpg",
+      "instructions": "Faça batatas fritas bem crocantes. Prepare a massa de pizza com molho de tomate. Adicione queijo mussarela e cheddar. Espalhe as batatas fritas por cima. Tempere com alecrim e páprica. Asse por 15 minutos a 220°C."
+    },
+    {
+      "title": "Pizza vegana",
+      "duration": "30 minutos",
+      "image": "/vegan.jpg",
+      "instructions": "Prepare massa de pizza (sem ovos nem laticínios). Espalhe molho de tomate temperado. Adicione queijo vegano (castanha ou soja). Coloque abobrinha, pimentão, tomate cereja e rúcula. Regue com azeite e temperos. Asse por 18 minutos a 200°C."
+    },
+    {
+      "title": "Pizza de cebola",
+      "duration": "40 minutos",
+      "image": "/onion.jpg",
+      "instructions": "Caramelize 3 cebolas grandes em fatias (15 minutos). Prepare a massa de pizza. Espalhe molho branco ou azeite temperado. Adicione queijo gruyère ou mussarela. Cubra com as cebolas caramelizadas. Finalize com tomilho e asse por 15 minutos a 200°C."
+    },
+    {
+      "title": "Pizza de brigadeiro",
+      "duration": "25 minutos",
+      "image": "/brigadeiro.jpg",
+      "instructions": "Faça uma massa doce com cacau em pó. Asse a massa por 10 minutos. Prepare brigadeiro cremoso (leite condensado, chocolate, manteiga). Espalhe o brigadeiro ainda morno sobre a massa. Polvilhe granulado colorido por toda superfície. Deixe esfriar por 10 minutos antes de servir."
+    },
+    {
+      "title": "Pizza Portuguesa",
+      "duration": "35 minutos",
+      "image": "/portuguese.jpg",
+      "instructions": "Prepare a massa de pizza tradicional. Espalhe molho de tomate temperado. Adicione queijo mussarela. Coloque fatias de presunto e cebola em rodelas. Distribua ovos cozidos cortados em rodelas. Adicione fatias de pimentão. Finalize com azeitonas verdes e orégano. Asse por 20 minutos a 180°C."
+    }
+  ]
+}

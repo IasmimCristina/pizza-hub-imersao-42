@@ -1,24 +1,13 @@
-import { useState } from "react";
-import { useAuth } from "../context/AuthContext";
+import { useLoginForm } from "../hooks/useLoginForm";
 
 type Props = {
   onClose: () => void;
 };
 
 export const LoginModal = ({ onClose }: Props) => {
-  const { login } = useAuth();
-  const [name, setName] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!login(name, password)) {
-      setError("Nome ou senha inválidos");
-    } else {
-      onClose();
-    }
-  };
+  // Utilização do custom Hook que separa a lógica da UI.
+  const { name, setName, password, setPassword, error, handleSubmit } =
+    useLoginForm(onClose);
 
   return (
     <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
@@ -42,7 +31,7 @@ export const LoginModal = ({ onClose }: Props) => {
             className="border border-gray-200 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-400 transition"
             placeholder="Seu nome"
             value={name}
-            onChange={e => setName(e.target.value)}
+            onChange={(e) => setName(e.target.value)}
             required
             autoFocus
           />
@@ -51,7 +40,7 @@ export const LoginModal = ({ onClose }: Props) => {
             placeholder="Senha"
             type="password"
             value={password}
-            onChange={e => setPassword(e.target.value)}
+            onChange={(e) => setPassword(e.target.value)}
             required
           />
         </div>
@@ -60,7 +49,7 @@ export const LoginModal = ({ onClose }: Props) => {
         )}
         <button
           type="submit"
-          className="mt-2  bg-red-700 text-white rounded-full py-2 font-semibold shadow hover:bg-red-400 transition"
+          className="mt-2  bg-red-700 text-white py-2 font-semibold shadow hover:bg-red-400 transition"
         >
           Entrar
         </button>

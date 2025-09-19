@@ -24,6 +24,24 @@
     "instructions": "Faça batatas fritas bem crocantes. Prepare a massa de pizza com molho de tomate. Adicione queijo mussarela e cheddar. Espalhe as batatas fritas por cima. Tempere com alecrim e páprica. Asse por 15 minutos a 220°C."
   },
   {
+    "title": "Pizza Margherita",
+    "duration": "20 minutos",
+    "image": "/margherita.jpg",
+    "instructions": "Prepare a massa de pizza tradicional. Espalhe molho de tomate fresco temperado com manjericão. Adicione fatias de mussarela de búfala ou queijo mussarela fresco. Distribua folhas frescas de manjericão por toda a pizza. Regue levemente com azeite extravirgem. Asse por 12-15 minutos a 220°C até a massa ficar dourada e o queijo derretido."
+  },
+  {
+    "title": "Pizza de pepperoni",
+    "duration": "25 minutos",
+    "image": "/pepperoni.jpg",
+    "instructions": "Prepare a massa de pizza. Espalhe molho de tomate temperado uniformemente. Adicione queijo mussarela ralado cobrindo toda a superfície. Distribua fatias de pepperoni por toda a pizza, deixando espaços entre elas. Polvilhe orégano seco por cima. Asse por 15-18 minutos a 200°C até o pepperoni ficar levemente crocante nas bordas."
+  },
+  {
+    "title": "Pizza de queijo",
+    "duration": "18 minutos",
+    "image": "/cheese.jpg",
+    "instructions": "Prepare a massa de pizza. Espalhe uma fina camada de molho de tomate ou molho branco. Cubra generosamente com uma mistura de queijos: mussarela, parmesão ralado e queijo prato em cubos. Adicione um toque de queijo gorgonzola para sabor extra (opcional). Regue levemente com azeite e polvilhe orégano. Asse por 12-15 minutos a 210°C até os queijos dereterem e dourarem."
+  },
+  {
     "title": "Pizza vegana",
     "duration": "30 minutos",
     "image": "/vegan.jpg",

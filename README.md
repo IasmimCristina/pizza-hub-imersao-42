@@ -1,69 +1,36 @@
-# React + TypeScript + Vite
+# APIs nativas do React – Bom uso
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Aplicativo Hands on: Pizza Hub - Imersão42
 
-Currently, two official plugins are available:
+**Descrição:**  
+Um simples aplicativo que reúne receitas de diversos sabores de pizza. O usuário pode escolher se gosta ou não dessas receitas e adicioná-las ou removê-las de duas listas diferentes: favoritas e detestadas. Adicionalmente, o usuário também conseguirá cadastrar novas receitas.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**Foco da prática:**  
+Criar custom Hooks (adição, remoção, atualização da visualização das receitas, etc) que usam as melhores práticas relacionadas aos Hooks nativos do React. Além de também explicar sobre os benefícios da Context API.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Tecnologias
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Projeto usa: **React** & **TypeScript**
+- Estilização: **Tailwind CSS**
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Como rodar o projeto
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+1. Dependências:
+   ```bash
+   pnpm install
+   # ou
+   npm install
+   ```
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+2. Inicie o app:
+   ```bash
+   pnpm dev
+   # ou
+   npm run dev
+   ```
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+3. Acesse em: [http://localhost:5173](http://localhost:5173)

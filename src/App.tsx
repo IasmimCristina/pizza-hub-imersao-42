@@ -8,7 +8,7 @@ import { RecipeDetail } from "./view/components/RecipeDetail";
 import { LoginModal } from "./view/components/LoginModal";
 import { AuthProvider, useAuth } from "./view/context/AuthContext";
 import { RecipeLists } from "./view/components/RecipeLists";
-import { RecipeListsProvider } from "./view/context/RecipeListsContext";
+import { UserListsProvider } from "./view/context/UserListsContext";
 
 export const MainApp = () => {
   // Uso de Hooks no topo.
@@ -22,7 +22,7 @@ export const MainApp = () => {
   return (
     // O Provider envolve o app e serve o contexto a vários componentes.
 
-    <RecipeListsProvider>
+    <UserListsProvider>
       <Header onLoginClick={() => setShowLogin(true)} />
 
       <main className="pt-14 md:pt-24">
@@ -41,7 +41,7 @@ export const MainApp = () => {
       </main>
 
       {showLogin && <LoginModal onClose={() => setShowLogin(false)} />}
-    </RecipeListsProvider>
+    </UserListsProvider>
   );
 };
 

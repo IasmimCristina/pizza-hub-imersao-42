@@ -1,3 +1,8 @@
+import type { Recipe } from "./Recipe";
+
 export type User = {
-  name: string; // Simples, por enquanto.
+  name: string;
+  // Listas de preferências:
+  favorites: Recipe[];
+  hated: Recipe[];
 };

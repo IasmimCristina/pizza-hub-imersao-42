@@ -1,6 +1,6 @@
 import type { Recipe } from "../../domain/entities/Recipe";
 import { useAuth } from "../context/AuthContext";
-import { useRecipeLists } from "../context/RecipeListsContext";
+import { useUserLists } from "../context/UserListsContext";
 
 type Props = {
   recipe: Recipe;
@@ -9,7 +9,7 @@ type Props = {
 
 export const RecipeCard = ({ recipe, onView }: Props) => {
   const { user } = useAuth();
-  const { addToFavorites, addToHated } = useRecipeLists(); // Funções específicas providenciadas pelo context + custom Hook.
+  const { addToFavorites, addToHated } = useUserLists(); // Funções específicas providenciadas pelo context + custom Hook.
 
   return (
     <div

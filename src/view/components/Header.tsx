@@ -11,10 +11,10 @@ export const Header = ({ onLoginClick }: Props) => {
   return (
     <header className="w-full fixed top-0 left-0 z-50 bg-black shadow-lg shadow-black/40 flex items-center justify-between px-8 py-4 h-14 md:h-24">
       <div className="flex items-center gap-4">
-        <h1 className="text-base md:text-4xl font-extrabold text-white tracking-tight">
+        <h1 className="text-sm md:text-4xl font-extrabold text-white tracking-tight">
           Pizza Hub 🍕
         </h1>
-        <span className="block w-1 h-10 bg-gradient-to-b from-red-500 to-gray-800 rounded-full ml-2" />
+        <span className="block w-1 h-10 bg-gradient-to-b from-red-500 to-gray-800 rounded-full ml-1 md:ml-2" />
       </div>
       <div className="flex items-center gap-6">
         <img
@@ -24,7 +24,9 @@ export const Header = ({ onLoginClick }: Props) => {
         />
         <div className="flex items-center gap-3">
           {user && (
-            <span className="text-white font-semibold hidden sm:inline text-xs md:text-base">Olá, {user.name}</span>
+            <span className="text-white font-semibold hidden sm:inline text-xs md:text-base">
+              Olá, {user.name}
+            </span>
           )}
           {!user ? (
             <button

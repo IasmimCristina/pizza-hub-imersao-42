@@ -14,6 +14,7 @@ export const MainApp = () => {
   // Uso de Hooks no topo.
   // Estado dinâmico que controla a aparição dos componentes:
   const [selected, setSelected] = useState<Recipe | null>(null); // Uso de null para representar nenhum valor.
+  const [search, setSearch] = useState(""); // Novo estado de busca!
   const [showLogin, setShowLogin] = useState(false);
   const { user } = useAuth();
 
@@ -26,13 +27,18 @@ export const MainApp = () => {
       <Header onLoginClick={() => setShowLogin(true)} />
 
       <main className="pt-14 md:pt-24">
-        <Hero />
+        <Hero search={search} setSearch={setSearch} />
+
         <div className="px-4 md:px-8">
           {user && <RecipeLists onView={setSelected} />}
 
           {!selected ? (
             <section>
-              <RecipeGrid recipes={recipes} onView={setSelected} />
+              <RecipeGrid
+                recipes={recipes}
+                onView={setSelected}
+                search={search}
+              />
             </section>
           ) : (
             <RecipeDetail recipe={selected} onBack={() => setSelected(null)} />

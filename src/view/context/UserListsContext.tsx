@@ -1,6 +1,8 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import type { Recipe } from "../../domain/entities/Recipe";
 import { useAuth } from "./AuthContext";
+import { saveUserToStorage } from "../../infraestructure/auth/userStorage";
+
 
 type UserListsContextType = {
   favorites: Recipe[];
@@ -21,14 +23,22 @@ export const UserListsProvider = ({
   children: React.ReactNode;
 }) => {
   const { user } = useAuth();
-  const [favorites, setFavorites] = useState<Recipe[]>([]);
-  const [hated, setHated] = useState<Recipe[]>([]);
+  const [favorites, setFavorites] = useState<Recipe[]>(user?.favorites ?? []);
+  const [hated, setHated] = useState<Recipe[]>(user?.hated ?? []);
 
   // Limpa listas ao trocar de usuário
   useEffect(() => {
     setFavorites(user?.favorites ?? []);
     setHated(user?.hated ?? []);
   }, [user]);
+
+    // Salva listas no usuário e persiste no storage
+  useEffect(() => {
+    if (user) {
+      const updatedUser = { ...user, favorites, hated };
+      saveUserToStorage(updatedUser);
+    }
+  }, [favorites, hated, user]);
 
   const addToFavorites = (recipe: Recipe) => {
     setFavorites((prev) =>

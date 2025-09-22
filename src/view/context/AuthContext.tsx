@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import type { User } from "../../domain/entities/User";
 import { login as loginService } from "../../infraestructure/auth/authService";
-import { saveUserToStorage, getUserFromStorage, clearUserFromStorage } from "../../infraestructure/auth/userStorage";
+import { saveUserToStorage, getUserFromStorage, clearUserFromStorage, getUserListsByName } from "../../infraestructure/auth/userStorage";
 
 type AuthContextType = {
   user: User | null;
@@ -19,8 +19,15 @@ const [user, setUser] = useState<User | null>(() => getUserFromStorage());
   const login = (name: string, password: string) => {
     const loggedUser = loginService(name, password);
     if (loggedUser) {
-      setUser(loggedUser);
-      saveUserToStorage(loggedUser);
+      // Recuperando por nome:
+      const lists = getUserListsByName(name);
+      const userWithLists: User = {
+        ...loggedUser,
+        favorites: lists.favorites,
+        hated: lists.hated,
+      };
+      setUser(userWithLists);
+      saveUserToStorage(userWithLists);
       return true;
     }
     return false;
@@ -31,7 +38,7 @@ const [user, setUser] = useState<User | null>(() => getUserFromStorage());
     clearUserFromStorage();
   };
 
-  // Atualiza storage se user mudar (apenas se necessário)
+  // Atualiza storage se user mudar:
   useEffect(() => {
     if (user) {
       saveUserToStorage(user);

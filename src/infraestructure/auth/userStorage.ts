@@ -5,7 +5,7 @@ const USER_LISTS_KEY = "pizza-hub-user-lists";
 
 export function saveUserToStorage(user: User) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(user));
-  // Salva listas por nome de usuário
+  // Salvando por nome de usuário:
   if (user.name) {
     const allLists = getAllUserLists();
     allLists[user.name] = {

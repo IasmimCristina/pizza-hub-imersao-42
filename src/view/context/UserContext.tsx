@@ -23,22 +23,29 @@ type UserContextType = {
 const UserContext = createContext<UserContextType | undefined>(undefined);
 
 export const UserProvider = ({ children }: { children: React.ReactNode }) => {
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<User | null>(() => {
+    // Executa apenas uma vez na criação do estado
+    return getUserFromStorage();
+  });
 
-  // Restaurar usuário do localStorage ao inicializar
+  // Sincronização entre abas:
   useEffect(() => {
-    const savedUser = getUserFromStorage();
-    if (savedUser) {
-      setUser(savedUser);
-    }
+    const handleStorageChange = (event: StorageEvent) => {
+      if (event.key === "pizza-hub-user") {
+        // Logout se foi removido:
+        const newUser = event.newValue ? JSON.parse(event.newValue) : null;
+        setUser(newUser);
+      }
+    };
+
+    window.addEventListener("storage", handleStorageChange);
+    return () => window.removeEventListener("storage", handleStorageChange);
   }, []);
 
-  // Salvar usuário no localStorage sempre que o estado mudar
-  useEffect(() => {
-    if (user) {
-      saveUserToStorage(user);
-    }
-  }, [user]);
+  const saveUser = (userData: User) => {
+    setUser(userData);
+    saveUserToStorage(userData);
+  };
 
   const login = (name: string, password: string): boolean => {
     const loggedUser = loginService(name, password);
@@ -54,8 +61,7 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
         hated:
           savedLists.hated.length > 0 ? savedLists.hated : loggedUser.hated,
       };
-
-      setUser(userWithLists);
+      saveUser(userWithLists);
       return true;
     }
     return false;
@@ -69,70 +75,54 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
   // Use prev sempre que o novo estado depender do estado anterior:
   const addToFavorites = (recipe: Recipe): void => {
     if (!user) return;
-
-    setUser((prev) => {
-      if (!prev) return prev;
-
-      const favorites = prev.favorites.some(
+    const updatedUser = {
+      ...user,
+      favorites: user.favorites.some(
         (favRecipe) => favRecipe.title === recipe.title
       )
-        ? prev.favorites
-        : [...prev.favorites, recipe];
-
-      const hated = prev.hated.filter(
+        ? user.favorites
+        : [...user.favorites, recipe],
+      hated: user.hated.filter(
         (hatedRecipe) => hatedRecipe.title !== recipe.title
-      );
-
-      return { ...prev, favorites, hated };
-    });
+      ),
+    };
+    saveUser(updatedUser);
   };
 
   const addToHated = (recipe: Recipe): void => {
     if (!user) return;
-
-    setUser((prev) => {
-      if (!prev) return prev;
-
-      const hated = prev.hated.some(
+    const updatedUser = {
+      ...user,
+      hated: user.hated.some(
         (hatedRecipe) => hatedRecipe.title === recipe.title
       )
-        ? prev.hated
-        : [...prev.hated, recipe];
-
-      const favorites = prev.favorites.filter(
+        ? user.hated
+        : [...user.hated, recipe],
+      favorites: user.favorites.filter(
         (favRecipe) => favRecipe.title !== recipe.title
-      );
-
-      return { ...prev, favorites, hated };
-    });
+      ),
+    };
+    saveUser(updatedUser);
   };
 
   const removeFromFavorites = (title: string): void => {
     if (!user) return;
-
-    setUser((prev) => {
-      if (!prev) return prev;
-
-      const favorites = prev.favorites.filter(
+    const updatedUser = {
+      ...user,
+      favorites: user.favorites.filter(
         (favRecipe) => favRecipe.title !== title
-      );
-
-      return { ...prev, favorites };
-    });
+      ),
+    };
+    saveUser(updatedUser);
   };
 
   const removeFromHated = (title: string): void => {
     if (!user) return;
-
-    setUser((prev) => {
-      if (!prev) return prev;
-
-      const hated = prev.hated.filter(
-        (hatedRecipe) => hatedRecipe.title !== title
-      );
-
-      return { ...prev, hated };
-    });
+    const updatedUser = {
+      ...user,
+      hated: user.hated.filter((hatedRecipe) => hatedRecipe.title !== title),
+    };
+    saveUser(updatedUser);
   };
 
   return (

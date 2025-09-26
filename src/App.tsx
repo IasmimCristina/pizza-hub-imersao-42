@@ -6,7 +6,7 @@ import { RecipeGrid } from "./view/components/RecipeGrid";
 import { Hero } from "./view/components/Hero";
 import { RecipeDetail } from "./view/components/RecipeDetail";
 import { LoginModal } from "./view/components/LoginModal";
-import { AuthProvider, useUser } from "./view/context/UserContext";
+import { UserProvider, useUser } from "./view/context/UserContext";
 import { RecipeLists } from "./view/components/RecipeLists";
 
 export const MainApp = () => {
@@ -45,9 +45,9 @@ export const MainApp = () => {
 };
 
 export const App = () => (
-  <AuthProvider>
+  <UserProvider>
     <MainApp />
-  </AuthProvider>
+  </UserProvider>
 );
 
 export default App;

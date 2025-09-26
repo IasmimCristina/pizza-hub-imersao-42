@@ -17,7 +17,7 @@ type UserContextType = {
 //  Centralização do estado global:
 const UserContext = createContext<UserContextType | undefined>(undefined);
 
-export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
+export const UserProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
 
   const login = (name: string, password: string) => {
@@ -117,6 +117,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 //  Custom Hook para utilização do contexto:
 export const useUser = () => {
   const ctx = useContext(UserContext);
-  if (!ctx) throw new Error("useUser must be used within AuthProvider!");
+  if (!ctx) throw new Error("useUser must be used within UserProvider!");
   return ctx;
 };

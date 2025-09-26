@@ -1,6 +1,6 @@
 import { ListCard } from "./ListCard";
 import type { Recipe } from "../../domain/entities/Recipe";
-import { useUserLists } from "../context/UserListsContext";
+import { useUser } from "../context/UserContext";
 
 type Props = {
   onView: (recipe: Recipe) => void;
@@ -8,20 +8,19 @@ type Props = {
 
 export const RecipeLists = ({ onView }: Props) => {
   // Uso de Hooks no topo.
-  const { favorites, hated, removeFromFavorites, removeFromHated } =
-    useUserLists();
+  const { user, removeFromFavorites, removeFromHated } = useUser();
 
   return (
     <div className="flex flex-col gap-8 my-8">
       <div>
         <h3 className="text-xl font-bold text-green-700 mb-2">Favoritas</h3>
         <div className="flex gap-3 flex-wrap">
-          {favorites.length === 0 && (
+          {user!.favorites.length === 0 && (
             <span className="text-gray-400 text-sm">
               Nenhuma favorita ainda.
             </span>
           )}
-          {favorites.map((recipe) => (
+          {user!.favorites.map((recipe) => (
             <ListCard
               key={recipe.title}
               recipe={recipe}
@@ -35,12 +34,12 @@ export const RecipeLists = ({ onView }: Props) => {
       <div>
         <h3 className="text-xl font-bold text-red-700 mb-2">Detestadas</h3>
         <div className="flex gap-3 flex-wrap">
-          {hated.length === 0 && (
+          {user!.hated.length === 0 && (
             <span className="text-gray-400 text-sm">
               Nenhuma detestada ainda.
             </span>
           )}
-          {hated.map((recipe) => (
+          {user!.hated.map((recipe) => (
             <ListCard
               key={recipe.title}
               recipe={recipe}

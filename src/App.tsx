@@ -6,23 +6,22 @@ import { RecipeGrid } from "./view/components/RecipeGrid";
 import { Hero } from "./view/components/Hero";
 import { RecipeDetail } from "./view/components/RecipeDetail";
 import { LoginModal } from "./view/components/LoginModal";
-import { AuthProvider, useAuth } from "./view/context/AuthContext";
+import { AuthProvider, useUser } from "./view/context/UserContext";
 import { RecipeLists } from "./view/components/RecipeLists";
-import { UserListsProvider } from "./view/context/UserListsContext";
 
 export const MainApp = () => {
   // Uso de Hooks no topo.
   // Estado dinâmico que controla a aparição dos componentes:
   const [selected, setSelected] = useState<Recipe | null>(null); // Uso de null para representar nenhum valor.
   const [showLogin, setShowLogin] = useState(false);
-  const { user } = useAuth();
+  const { user } = useUser();
 
   const recipes = recipesData as Recipe[];
 
   return (
     // O Provider envolve o app e serve o contexto a vários componentes.
 
-    <UserListsProvider>
+    <>
       <Header onLoginClick={() => setShowLogin(true)} />
 
       <main className="pt-14 md:pt-24">
@@ -41,7 +40,7 @@ export const MainApp = () => {
       </main>
 
       {showLogin && <LoginModal onClose={() => setShowLogin(false)} />}
-    </UserListsProvider>
+    </>
   );
 };
 

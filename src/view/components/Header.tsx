@@ -1,12 +1,12 @@
 import ImersaoLogo from "/Imersao42.svg";
-import { useAuth } from "../context/AuthContext";
+import { useUser } from "../context/UserContext";
 
 type Props = {
   onLoginClick: () => void;
 };
 
 export const Header = ({ onLoginClick }: Props) => {
-  const { user, logout } = useAuth();
+  const { user, logout } = useUser();
 
   return (
     <header className="w-full fixed top-0 left-0 z-50 bg-black shadow-lg shadow-black/40 flex items-center justify-between px-8 py-4 h-14 md:h-24">
@@ -24,7 +24,9 @@ export const Header = ({ onLoginClick }: Props) => {
         />
         <div className="flex items-center gap-3">
           {user && (
-            <span className="text-white font-semibold hidden sm:inline text-xs md:text-base">Olá, {user.name}</span>
+            <span className="text-white font-semibold hidden sm:inline text-xs md:text-base">
+              Olá, {user.name}
+            </span>
           )}
           {!user ? (
             <button

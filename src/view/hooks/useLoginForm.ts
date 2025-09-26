@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { useAuth } from "../context/AuthContext";
+import { useUser } from "../context/UserContext";
 
 // Separação de responsbailidades - Lógica.
 export const useLoginForm = (onSuccess?: () => void) => {
   // Utilização do contexto.
-  const { login } = useAuth();
+  const { login } = useUser();
 
   //  O custom Hook controla o estado dos campos
   const [name, setName] = useState("");

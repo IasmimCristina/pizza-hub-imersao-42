@@ -1,7 +1,7 @@
-import { useAuth } from "../context/AuthContext";
+import { useUser } from "../context/UserContext";
 
 export const Hero = () => {
-  const { user } = useAuth();
+  const { user } = useUser();
 
   return (
     <section className="relative w-full h-20 md:h-40  flex items-center justify-center overflow-hidden bg-[url('/background.jpeg')] bg-cover bg-center">

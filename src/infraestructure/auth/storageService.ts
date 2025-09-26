@@ -1,10 +1,12 @@
+
 import type { User } from "../../domain/entities/User";
 
 const STORAGE_KEY = "pizza-hub-user";
 const USER_LISTS_KEY = "pizza-hub-user-lists";
 
-export function saveUserToStorage(user: User) {
+export function saveUserToStorage(user: User): void {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(user));
+  
   // Salvando por nome de usuário:
   if (user.name) {
     const allLists = getAllUserLists();
@@ -19,6 +21,7 @@ export function saveUserToStorage(user: User) {
 export function getUserFromStorage(): User | null {
   const data = localStorage.getItem(STORAGE_KEY);
   if (!data) return null;
+  
   try {
     return JSON.parse(data) as User;
   } catch {
@@ -26,13 +29,14 @@ export function getUserFromStorage(): User | null {
   }
 }
 
-export function clearUserFromStorage() {
+export function clearUserFromStorage(): void {
   localStorage.removeItem(STORAGE_KEY);
 }
 
 function getAllUserLists(): Record<string, { favorites: User["favorites"]; hated: User["hated"] }> {
   const data = localStorage.getItem(USER_LISTS_KEY);
   if (!data) return {};
+  
   try {
     return JSON.parse(data);
   } catch {

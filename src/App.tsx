@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import recipesData from "./infraestructure/data/recipes.json";
 import type { Recipe } from "./domain/entities/Recipe";
 import { Header } from "./view/components/Header";
@@ -15,37 +15,48 @@ export const MainApp = () => {
   const [selected, setSelected] = useState<Recipe | null>(null); // Uso de null para representar nenhum valor.
   const [search, setSearch] = useState(""); // Novo estado de busca!
   const [showLogin, setShowLogin] = useState(false);
+
   const { user } = useUser();
 
   const recipes = recipesData as Recipe[];
 
+  // Memoização da busca para otimizar performance
+  const filteredRecipes = useMemo(() => {
+    if (!search.trim()) return recipes;
+
+    return recipes.filter(
+      (recipe) =>
+        recipe.title.toLowerCase().includes(search.toLowerCase().trim()) ||
+        recipe.instructions.toLowerCase().includes(search.toLowerCase().trim())
+    );
+  }, [recipes, search]);
+
+  const handleCloseDetail = () => setSelected(null);
+  const handleShowLogin = () => setShowLogin(true);
+  const handleCloseLogin = () => setShowLogin(false);
+
   return (
     // O Provider envolve o app e serve o contexto a vários componentes.
-
     <>
-      <Header onLoginClick={() => setShowLogin(true)} />
-
+      <Header onLoginClick={handleShowLogin} />
       <main className="pt-14 md:pt-24">
         <Hero search={search} setSearch={setSearch} />
-
         <div className="px-4 md:px-8">
           {user && <RecipeLists onView={setSelected} />}
-
           {!selected ? (
             <section>
               <RecipeGrid
-                recipes={recipes}
+                recipes={filteredRecipes}
                 onView={setSelected}
                 search={search}
               />
             </section>
           ) : (
-            <RecipeDetail recipe={selected} onBack={() => setSelected(null)} />
+            <RecipeDetail recipe={selected} onBack={handleCloseDetail} />
           )}
         </div>
       </main>
-
-      {showLogin && <LoginModal onClose={() => setShowLogin(false)} />}
+      {showLogin && <LoginModal onClose={handleCloseLogin} />}
     </>
   );
 };

@@ -20,15 +20,8 @@ export const UserListsProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const { user } = useAuth();
   const [favorites, setFavorites] = useState<Recipe[]>([]);
   const [hated, setHated] = useState<Recipe[]>([]);
-
-  // Limpa listas ao trocar de usuário
-  useEffect(() => {
-    setFavorites(user?.favorites ?? []);
-    setHated(user?.hated ?? []);
-  }, [user]);
 
   const addToFavorites = (recipe: Recipe) => {
     setFavorites((prev) =>

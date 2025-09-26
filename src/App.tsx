@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import recipesData from "./infraestructure/data/recipes.json";
 import type { Recipe } from "./domain/entities/Recipe";
 import { Header } from "./view/components/Header";
@@ -20,16 +20,15 @@ export const MainApp = () => {
 
   const recipes = recipesData as Recipe[];
 
-  // Memoização da busca para otimizar performance
-  const filteredRecipes = useMemo(() => {
-    if (!search.trim()) return recipes;
-
-    return recipes.filter(
-      (recipe) =>
-        recipe.title.toLowerCase().includes(search.toLowerCase().trim()) ||
-        recipe.instructions.toLowerCase().includes(search.toLowerCase().trim())
+  const filteredRecipes = recipes.filter((recipe) => {
+    const searchTerm = search.toLowerCase();
+    //  Filtra por duração, título e instruções:
+    return (
+      recipe.title.toLowerCase().includes(searchTerm) ||
+      recipe.instructions.toLowerCase().includes(searchTerm) ||
+      recipe.duration.toLowerCase().includes(searchTerm)
     );
-  }, [recipes, search]);
+  });
 
   const handleCloseDetail = () => setSelected(null);
   const handleShowLogin = () => setShowLogin(true);
@@ -45,11 +44,7 @@ export const MainApp = () => {
           {user && <RecipeLists onView={setSelected} />}
           {!selected ? (
             <section>
-              <RecipeGrid
-                recipes={filteredRecipes}
-                onView={setSelected}
-                search={search}
-              />
+              <RecipeGrid recipes={filteredRecipes} onView={setSelected} />
             </section>
           ) : (
             <RecipeDetail recipe={selected} onBack={handleCloseDetail} />

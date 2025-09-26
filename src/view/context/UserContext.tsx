@@ -76,7 +76,7 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
   const addToFavorites = (recipe: Recipe): void => {
     setUser((prev) => {
       if (!prev) return prev;
-      
+
       const updatedUser = {
         ...prev,
         favorites: prev.favorites.some(
@@ -88,7 +88,7 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
           (hatedRecipe) => hatedRecipe.title !== recipe.title
         ),
       };
-      
+
       // Salva no localStorage com o valor mais recente:
       saveUserToStorage(updatedUser);
       return updatedUser;
@@ -98,7 +98,7 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
   const addToHated = (recipe: Recipe): void => {
     setUser((prev) => {
       if (!prev) return prev;
-      
+
       const updatedUser = {
         ...prev,
         hated: prev.hated.some(
@@ -110,7 +110,7 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
           (favRecipe) => favRecipe.title !== recipe.title
         ),
       };
-      
+
       // Salva no localStorage com o valor mais recente:
       saveUserToStorage(updatedUser);
       return updatedUser;
@@ -120,14 +120,14 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
   const removeFromFavorites = (title: string): void => {
     setUser((prev) => {
       if (!prev) return prev;
-      
+
       const updatedUser = {
         ...prev,
         favorites: prev.favorites.filter(
           (favRecipe) => favRecipe.title !== title
         ),
       };
-      
+
       // Salva no localStorage com o valor mais recente:
       saveUserToStorage(updatedUser);
       return updatedUser;
@@ -137,12 +137,12 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
   const removeFromHated = (title: string): void => {
     setUser((prev) => {
       if (!prev) return prev;
-      
+
       const updatedUser = {
         ...prev,
         hated: prev.hated.filter((hatedRecipe) => hatedRecipe.title !== title),
       };
-      
+
       // Salva no localStorage com o valor mais recente:
       saveUserToStorage(updatedUser);
       return updatedUser;

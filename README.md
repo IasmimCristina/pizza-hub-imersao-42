@@ -15,9 +15,12 @@ Um simples aplicativo que reúne receitas de diversos sabores de pizza. O usuár
 
 
 
-
 **Foco da prática:**  
 Criar custom Hooks que usam as melhores práticas relacionadas aos Hooks nativos do React para features como login, logout, adição, remoção, atualização da visualização das receitas, etc. Além de também explicar sobre os benefícios da Context API.
+
+![pizzahubapp](https://github.com/user-attachments/assets/0b1abbc5-d951-4fa4-b62b-579ac0fc065b)
+
+
 
 ---
 

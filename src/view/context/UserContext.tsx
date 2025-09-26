@@ -74,55 +74,79 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
 
   // Use prev sempre que o novo estado depender do estado anterior:
   const addToFavorites = (recipe: Recipe): void => {
-    if (!user) return;
-    const updatedUser = {
-      ...user,
-      favorites: user.favorites.some(
-        (favRecipe) => favRecipe.title === recipe.title
-      )
-        ? user.favorites
-        : [...user.favorites, recipe],
-      hated: user.hated.filter(
-        (hatedRecipe) => hatedRecipe.title !== recipe.title
-      ),
-    };
-    saveUser(updatedUser);
+    setUser((prev) => {
+      if (!prev) return prev;
+      
+      const updatedUser = {
+        ...prev,
+        favorites: prev.favorites.some(
+          (favRecipe) => favRecipe.title === recipe.title
+        )
+          ? prev.favorites
+          : [...prev.favorites, recipe],
+        hated: prev.hated.filter(
+          (hatedRecipe) => hatedRecipe.title !== recipe.title
+        ),
+      };
+      
+      // Salva no localStorage com o valor mais recente:
+      saveUserToStorage(updatedUser);
+      return updatedUser;
+    });
   };
 
   const addToHated = (recipe: Recipe): void => {
-    if (!user) return;
-    const updatedUser = {
-      ...user,
-      hated: user.hated.some(
-        (hatedRecipe) => hatedRecipe.title === recipe.title
-      )
-        ? user.hated
-        : [...user.hated, recipe],
-      favorites: user.favorites.filter(
-        (favRecipe) => favRecipe.title !== recipe.title
-      ),
-    };
-    saveUser(updatedUser);
+    setUser((prev) => {
+      if (!prev) return prev;
+      
+      const updatedUser = {
+        ...prev,
+        hated: prev.hated.some(
+          (hatedRecipe) => hatedRecipe.title === recipe.title
+        )
+          ? prev.hated
+          : [...prev.hated, recipe],
+        favorites: prev.favorites.filter(
+          (favRecipe) => favRecipe.title !== recipe.title
+        ),
+      };
+      
+      // Salva no localStorage com o valor mais recente:
+      saveUserToStorage(updatedUser);
+      return updatedUser;
+    });
   };
 
   const removeFromFavorites = (title: string): void => {
-    if (!user) return;
-    const updatedUser = {
-      ...user,
-      favorites: user.favorites.filter(
-        (favRecipe) => favRecipe.title !== title
-      ),
-    };
-    saveUser(updatedUser);
+    setUser((prev) => {
+      if (!prev) return prev;
+      
+      const updatedUser = {
+        ...prev,
+        favorites: prev.favorites.filter(
+          (favRecipe) => favRecipe.title !== title
+        ),
+      };
+      
+      // Salva no localStorage com o valor mais recente:
+      saveUserToStorage(updatedUser);
+      return updatedUser;
+    });
   };
 
   const removeFromHated = (title: string): void => {
-    if (!user) return;
-    const updatedUser = {
-      ...user,
-      hated: user.hated.filter((hatedRecipe) => hatedRecipe.title !== title),
-    };
-    saveUser(updatedUser);
+    setUser((prev) => {
+      if (!prev) return prev;
+      
+      const updatedUser = {
+        ...prev,
+        hated: prev.hated.filter((hatedRecipe) => hatedRecipe.title !== title),
+      };
+      
+      // Salva no localStorage com o valor mais recente:
+      saveUserToStorage(updatedUser);
+      return updatedUser;
+    });
   };
 
   return (

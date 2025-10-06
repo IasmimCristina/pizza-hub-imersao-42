@@ -2,6 +2,7 @@ import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import App from "../../../App";
 
+//  Testes de integração
 describe("App", () => {
   describe("Authentication flow", () => {
     it("logs in and logs out correctly", async () => {
@@ -17,6 +18,8 @@ describe("App", () => {
       const passwordInput = screen.getByPlaceholderText(/senha/i);
       const submitButton = screen.getByRole("button", { name: /entrar/i });
 
+      // Nossa autenticação é mínima: escopo pequeno.
+      // Imersão42 --> Próximos vídeos focarão em autenticação.
       await user.type(nameInput, "Iasmim");
       await user.type(passwordInput, "password");
       await user.click(submitButton);

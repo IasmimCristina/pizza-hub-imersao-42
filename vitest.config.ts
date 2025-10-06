@@ -9,3 +9,7 @@ export default defineConfig({
     setupFiles: './vitest.setup.ts',
   },
 });
+//  Testes: economia de tempo, "documentação" e mais confiança no código.
+
+// --> Ferramentas: Vitest (test runner) + RTL (React Testing Library) 
+// --> Testes unitários e testes de integração (+ componentes)

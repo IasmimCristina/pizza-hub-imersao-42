@@ -8,7 +8,10 @@ import { RecipeDetail } from "./view/components/RecipeDetail";
 import { LoginModal } from "./view/components/LoginModal";
 import { UserProvider, useUser } from "./view/context/UserContext";
 import { RecipeLists } from "./view/components/RecipeLists";
-
+// ---- Imersão42 --> FRONTEND
+//  REPOSITÓRIO: versão final do aplicativo e suas branches.
+//  Nosso app possui um escopo simplificado.
+// ----
 export const MainApp = () => {
   // Uso de Hooks no topo.
   // Estado dinâmico que controla a aparição dos componentes:

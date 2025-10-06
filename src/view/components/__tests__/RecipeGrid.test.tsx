@@ -18,6 +18,7 @@ const mockRecipes: Recipe[] = [
   },
 ];
 
+//  Testes unitários
 describe("RecipeGrid", () => {
   it("displays all received pizzas", () => {
     render(

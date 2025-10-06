@@ -9,7 +9,7 @@
 
 
 **Descrição:**  
-Um simples aplicativo que reúne receitas de diversos sabores de pizza. O usuário pode escolher se gosta ou não dessas receitas e adicioná-las ou removê-las de duas listas diferentes: favoritas e detestadas. 
+Um simples aplicativo que reúne receitas de diversos sabores de pizza. O usuário pode escolher se gosta ou não dessas receitas e adicioná-las ou removê-las de duas listas diferentes: favoritas e detestadas. Além disso, há sincronização entre tabs em relação às listas de diversos usuários estarem no local storage.
 
 - **Possível futura melhoria:** adicionalmente, o usuário também poderia conseguir cadastrar novas receitas.
 

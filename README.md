@@ -13,6 +13,22 @@ Um simples aplicativo que reúne receitas de diversos sabores de pizza. O usuár
 
 - **Possível futura melhoria:** adicionalmente, o usuário também poderia conseguir cadastrar novas receitas.
 
+----
+
+
+- Task 1: **listagem de receitas.**
+- Task 2: **login e logout.**
+- Task 3: **adição e remoção relacionadas às listas.**
+- Task 4: **search\filtragem e sincronização entre abas.**
+
+
+## Guia das branches:
+
+- ``presentation/part-one``: **versão inicial do aplicativo sem utilização de Hooks ou contexto.**
+- ``presentation/part-two`` e ``feature/pizza-recipes-list``: **versão com a task 1 implementada apenas, sem a task 2.**
+- ``feature/pizza-recipes-user-lists``: **versão já com a adição e remoção de receitas por um usuário.**
+- ``feature/pizza-recipes-storage-search``: **versão com a filtragem e uso de useEffect. Ou seja, versão final, sem testes.**
+- ``tests/recipe-grid-app``: **testes implementados na versão final do app.**
 
 
 **Foco da prática:**  

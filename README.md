@@ -7,15 +7,6 @@
 
 <img width="1009" height="257" alt="image" src="https://github.com/user-attachments/assets/ab21cf30-287b-405e-8aa8-ca75c2725bd0" />
 
-
-**Descrição:**  
-Um simples aplicativo que reúne receitas de diversos sabores de pizza. O usuário pode escolher se gosta ou não dessas receitas e adicioná-las ou removê-las de duas listas diferentes: favoritas e detestadas. Além disso, há sincronização entre tabs em relação às listas de diversos usuários estarem no local storage.
-
-- **Possível futura melhoria:** adicionalmente, o usuário também poderia conseguir cadastrar novas receitas.
-
-----
-
-
 - Task 1: **listagem de receitas.**
 - Task 2: **login e logout.**
 - Task 3: **adição e remoção relacionadas às listas.**
@@ -29,6 +20,15 @@ Um simples aplicativo que reúne receitas de diversos sabores de pizza. O usuár
 - ``feature/pizza-recipes-user-lists``: **versão já com a adição e remoção de receitas por um usuário.**
 - ``feature/pizza-recipes-storage-search``: **versão com a filtragem e uso de useEffect. Ou seja, versão final, sem testes.**
 - ``tests/recipe-grid-app``: **testes implementados na versão final do app.**
+
+
+----
+
+**Descrição:**  
+Um simples aplicativo que reúne receitas de diversos sabores de pizza. O usuário pode escolher se gosta ou não dessas receitas e adicioná-las ou removê-las de duas listas diferentes: favoritas e detestadas. Além disso, há sincronização entre tabs em relação às listas de diversos usuários estarem no local storage.
+
+- **Possível futura melhoria:** adicionalmente, o usuário também poderia conseguir cadastrar novas receitas.
+
 
 
 **Foco da prática:**  

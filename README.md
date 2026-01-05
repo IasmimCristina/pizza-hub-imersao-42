@@ -2,6 +2,7 @@
 # APIs nativas do React – Bom uso
 
 - **Foco:** criar custom Hooks que usam as melhores práticas relacionadas aos Hooks nativos do React para features como login, logout, adição, remoção, atualização da visualização das receitas, etc. Além de também explicar sobre os benefícios da Context API.
+- **Link do vídeo com a teoria e a prática:** https://youtu.be/N2ZtnrQ9VAc
 
 ## Aplicativo Hands on: Pizza Hub - Imersão42
 
